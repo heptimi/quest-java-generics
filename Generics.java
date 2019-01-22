@@ -22,15 +22,15 @@ public class Generics {
     List<String>  strs = Arrays.asList("tout", "titi", "ototo", "jean", "tous", "taratata");
 
     // TODO - Ne retourner que les nombres pairs.
-    ints = filter(ints, i -> true);
+    ints = filter(ints, i -> i%2==0 );
     // TODO - Multiplier par 2 chaque élément de la liste.
-    ints = map(ints, i -> i);
+    ints = map(ints, i -> i*i);
     for (Integer i: ints) System.out.println(i);
 
     // TODO - Ne retourner que les Strings contenant au moins 2 lettres t.
-    //strs = ...
+    strs =  filter(strs, s -> s.matches(".*[t].*[t].*"))
     // TODO - Passer en majuscule toutes les Strings
-    //strs = ...
+    strs =  map(strs, s -> s.toUppercase())
     for (String s: strs) System.out.println(s);
   }
 
@@ -44,8 +44,12 @@ public class Generics {
   private <T> List<T> filter(Collection<T> c, Predicate<T> p) {
     List<T> result = new ArrayList<>();
     // TODO - Ajouter le code ici
-    // Retourner 'result' contenant les éléments de Collection filtrés par la méthode o.filter().
+    for (T t : c)
+      if (p.filter(t))
+        result.add(t);
     return result;
+    // Retourner 'result' contenant les éléments de Collection filtrés par la méthode o.filter().
+
   }
 
   /**
@@ -60,6 +64,12 @@ public class Generics {
     List<U> result = new ArrayList<>();
     // TODO - Ajouter le code ici
     // Retourner 'result' contenant les éléments de la Collection modifiés par la méthode m.map().
+    for (T t: c)
+      result.add(m.map(t));
+    return result;
     return result;
   }
-}
+
+  int count = 0;
+
+
