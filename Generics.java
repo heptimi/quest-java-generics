@@ -67,9 +67,11 @@ public class Generics {
     for (T t: c)
       result.add(m.map(t));
     return result;
-    return result;
+
   }
 
-  int count = 0;
+}
+
+
 
 
